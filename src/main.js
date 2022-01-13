@@ -8,9 +8,7 @@ function render(props) {
         container
     } = props;
     
-    console.log('container: ', container);
-    app
-        .use(router)
+    app.use(router)
         .mount(container ? container.querySelector('#app') : '#app')
 }
 
@@ -20,22 +18,22 @@ if (!window.__POWERED_BY_QIANKUN__) {
 }
 
 export async function bootstrap() {
-    console.log('[vue] vue app bootstraped');
+    
 }
 export async function mount(props) {
     render(props);
-    console.log('[vue] props from main framework', props);
 }
 export async function unmount() {
-    // app.$destroy();
-    // app.$el.innerHTML = '';
-    // app = null;
-    // router = null;
+    app.$destroy();
+    app.$el.innerHTML = '';
+    app = null;
+    router = null;
 }
 
 /**
  * 可选生命周期钩子，仅使用 loadMicroApp 方式加载微应用时生效
  */
 export async function update(props) {
-    console.log('update props', props);
+    console.log('props: ', props);
+    
 }
