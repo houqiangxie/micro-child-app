@@ -7,6 +7,7 @@ module.exports = {
       'Access-Control-Allow-Origin': '*',
     },
   },
+  publicPath: process.env.NODE_ENV === 'production' ? '/micro-child-app' : '/',
   configureWebpack: {
     output: {
       library: `${name}-[name]`,

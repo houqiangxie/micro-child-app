@@ -4,6 +4,11 @@ import { createRouter, createWebHashHistory } from "vue-router";
 
 const routes = [
     {
+        path: '/',
+        name: 'Index',
+        component:()=>import('../views/index.vue')
+    },
+    {
         path: '/app-child',
         name: 'Index',
         component:()=>import('../views/index.vue')
