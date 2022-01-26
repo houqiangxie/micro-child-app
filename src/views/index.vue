@@ -1,6 +1,6 @@
 <template>
     <div>
-        我是child
+        我是index
         <div id="child"></div>
     </div>
 </template>

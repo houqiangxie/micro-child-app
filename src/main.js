@@ -1,7 +1,7 @@
 import './public-path';
 import { createApp } from 'vue'
 import App from './App.vue'
-let router = null;
+import router from './router'
 let app = createApp(App);
 function render(props) {
     const {
@@ -9,11 +9,11 @@ function render(props) {
     } = props;
     
     app.use(router)
-        .mount(container ? container.querySelector('#app') : '#app')
+        .mount(container ? container.querySelector('#app2') : '#app2')
 }
 
 // 独立运行时
-if (!window.__POWERED_BY_QIANKUN__) {
+if (!window.__POWERED_BY_QIANKUN__ || window.__MICRO_APP_ENVIRONMENT__) {
     render({});
 }
 
@@ -27,7 +27,6 @@ export async function unmount() {
     app.$destroy();
     app.$el.innerHTML = '';
     app = null;
-    router = null;
 }
 
 /**
@@ -37,6 +36,10 @@ export async function update(props) {
     console.log('props: ', props);
     
 }
+
+window.addEventListener('unmount', function () {
+    app.unmount()
+})
 
 
 
